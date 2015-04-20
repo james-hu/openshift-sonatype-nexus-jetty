@@ -14,6 +14,7 @@ java -cp lib/*:conf/ \
 -Dcom.sun.jndi.ldap.connect.pool.protocol="plain ssl" \
 org.sonatype.nexus.bootstrap.Launcher \
 conf/jetty.xml \
+conf/jetty-http-redirect-to-https.xml \
 conf/jetty-requestlog.xml \
 > $OPENSHIFT_DIY_LOG_DIR/out.log &
 
