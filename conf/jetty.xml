@@ -31,16 +31,8 @@
   <Call name="addConnector">
     <Arg>
       <New id="HTTPConnector" class="org.sonatype.nexus.bootstrap.jetty.InstrumentedSelectChannelConnector">
-        <Set name="host">
-          <Call name="getenv" class="java.lang.System">
-            <Arg>OPENSHIFT_DIY_IP</Arg>
-          </Call>
-        </Set>
-        <Set name="port">
-          <Call name="getenv" class="java.lang.System">
-            <Arg>OPENSHIFT_DIY_PORT</Arg>
-          </Call>
-        </Set>
+        <Set name="host"><Property name="application-host"/></Set>
+        <Set name="port"><Property name="application-port"/></Set>
         <Set name="forwarded">true</Set>
       </New>
     </Arg>
