@@ -17,12 +17,13 @@ export NEXUS_WORK=$OPENSHIFT_DATA_DIR/sonatype-work
 export NEXUS_HOME=$OPENSHIFT_DATA_DIR/$NEXUS_NAME
 
 # Launch the Jetty server directly.
-java -cp $NEXUS_HOME/lib/*:$NEXUS_HOME/conf/ \
+cd $NEXUS_HOME
+java -cp lib/*:conf/ \
 -Djava.net.preferIPv4Stack=true \
 -Dcom.sun.jndi.ldap.connect.pool.protocol="plain ssl" \
 org.sonatype.nexus.bootstrap.Launcher \
-$NEXUS_HOME/conf/jetty.xml \
-$NEXUS_HOME/conf/jetty-requestlog.xml \
+conf/jetty.xml \
+conf/jetty-requestlog.xml \
 > $OPENSHIFT_DIY_LOG_DIR/out.log &
 
 echo "Sonatype Nexus will be started"
